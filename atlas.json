@@ -1,0 +1,43 @@
+{
+  "branch": "master",
+  "files": [
+    "README.md"
+  ],
+  "formats": {
+    "pdf": {
+      "version": false,
+      "index": false,
+      "toc": false,
+      "syntaxhighlighting": false,
+      "show_comments": false
+    },
+    "epub": {
+      "index": false,
+      "toc": false,
+      "epubcheck": false,
+      "syntaxhighlighting": false,
+      "show_comments": false
+    },
+    "mobi": {
+      "index": false,
+      "toc": false,
+      "syntaxhighlighting": false,
+      "show_comments": false
+    },
+    "html": {
+      "index": false,
+      "toc": false,
+      "syntaxhighlighting": false,
+      "show_comments": false,
+      "consolidated": false,
+      "javascripts": [
+        "http://rawgit.com/oreillymedia/thebe/master/static/main-built.js",
+        "page.js"
+      ]
+    }
+  },
+  "theme": "oreillymedia/jupyter_theme",
+  "title": "Simple Line Plots with Matplotlib",
+  "github_url": "https://github.com/oreillymedia/simple-line-plots-with-matplotlib",
+  "uuid": "c794a40b-c239-4270-9cb7-69c5ab8d91b8"
+}
