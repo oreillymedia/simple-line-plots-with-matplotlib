@@ -4,6 +4,7 @@
 <p>This recipe will teach you how to make interactive plots, like this:</p>
 
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 %matplotlib inline
 import matplotlib.pyplot as plt
 import numpy as np
@@ -15,6 +16,7 @@ def plot_sine(frequency=1.0, amplitude=1.0):
     plt.plot(x, amplitude*np.sin(x*frequency));
 
 interact(plot_sine, frequency=(0.5, 10.0), amplitude=(0.0, 1.0));
+</code>
 </pre>
 
 
@@ -23,17 +25,21 @@ Here we will take a first look at creating a simple plot of this type.
 For all matplotlib plots, we start by creating a figure and an axes.</p>
 <p>First, run the code below to import the libraries we’ll be using in the example:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
 print("Dependencies loaded...")
+</code>
 </pre>
 
 
 <p>In their simplest form, a figure and axes can be created as follows:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 fig = plt.figure()
 ax = plt.axes()
+</code>
 </pre>
 
 
@@ -42,24 +48,30 @@ The <em>axes</em> (an instance of the class <code>plt.Axes</code>) is what we se
 Through this book, we’ll commonly use the variable name <code>fig</code> to refer to a figure instance, and <code>ax</code> to refer to an axes instance or set of axes instances.</p>
 <p>Once we have created an axes, we can use the <code>ax.plot</code> function to plot some data. Let’s start with a simple sine wave:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 fig = plt.figure()
 ax = plt.axes()
 
 x = np.linspace(0, 10, 1000)
 ax.plot(x, np.cos(x));
+</code>
 </pre>
 
 
 <p>Alternatively, we can use the pylab interface and let the figure and axes be created for us in the background.
 (See the sidebar on page X for a discussion of these two interfaces)</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x));
+</code>
 </pre>
 
 <p>If we want to create a single figure with multiple lines, we can simply call the <code>plot</code> function multiple times:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x*2));
 plt.plot(x, np.sin(x));
+</code>
 </pre>
 
 
@@ -73,19 +85,21 @@ The <code>plt.plot()</code> function takes additional arguments which can be use
 To adjust the color, you can use the <code>color</code> keyword, which accepts a string argument representing virtually any imaginable color.
 The color can be specified in a variety of ways, which we’ll show below:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x - 0), color='blue')        # specify color by name
 plt.plot(x, np.sin(x - 1), color='g')           # short color code (works for rgb &amp; cmyk)
 plt.plot(x, np.sin(x - 2), color='0.75')        # Greyscale between 0 and 1
 plt.plot(x, np.sin(x - 3), color='#FFDD44')     # Hex color code (RRGGBB from 00 to FF)
 plt.plot(x, np.sin(x - 4), color=(1.0,0.2,0.3)) # RGB tuple, between 0 and 1
 plt.plot(x, np.sin(x - 5), color='chartreuse')  # all html color names are supported;
+</code>
 </pre>
 
 
 <p>Note that if no color is specified, matplotib will automatically cycle through a set of default colors for the lines.</p>
 <p>Similarly, the line style can be adjusted using the <code>linestyle</code> keyword:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
-
+<code>
 plt.plot(x, x + 0, linestyle='solid')
 plt.plot(x, x + 1, linestyle='dashed')
 plt.plot(x, x + 2, linestyle='dashdot')
@@ -96,16 +110,18 @@ plt.plot(x, x + 4, linestyle='-')  # solid
 plt.plot(x, x + 5, linestyle='--') # dashed
 plt.plot(x, x + 6, linestyle='-.') # dashdot
 plt.plot(x, x + 7, linestyle=':')  # dotted;
+</code>
 </pre>
 
 
 <p>If you would like to be extremely terse, these linestyle codes and color codes can be combined into a single non-keyword argument to the <code>plt.plot()</code> function:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
-
+<code>
 plt.plot(x, x + 0, '-g')  # solid green
 plt.plot(x, x + 1, '--c') # dashed cyan
 plt.plot(x, x + 2, '-.k') # dashdot black
 plt.plot(x, x + 3, ':r')  # dotted red;
+</code>
 </pre>
 
 
@@ -119,42 +135,51 @@ plt.plot(x, x + 3, ':r')  # dotted red;
 Here we’ll briefly see how to change the limits of the x and y axes.
 The most basic way to do this is to use the <code>plt.xlim()</code> and <code>plt.ylim()</code> methods to set the numerical limits of the x and y axes:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
-
+<code>
 plt.plot(x, np.sin(x))
 
 plt.xlim(-1, 11)
 plt.ylim(-1.5, 1.5);
+</code>
 </pre>
 
 
 <p>If for some reason you’d like either axis to be displayed in reverse, you can simply reverse the order of the arguments:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x))
 
 plt.xlim(10, 0)
 plt.ylim(1.2, -1.2);
+</code>
 </pre>
 
 
 <p>A useful related method is <code>plt.axis()</code>: note here the potential confusion between <em>axes</em> with an <em>e</em>, and <em>axis</em> with an <em>i</em>.
 This method allows you to set the x and y limits with a single call, by passing a list which specifies <code>[xmin, xmax, ymin, ymax]</code>:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x))
 plt.axis([-1, 11, -1.5, 1.5]);
+</code>
 </pre>
 
 
 <p>The <code>plt.axis()</code> method goes even beyond this, allowing you to do things like automatically tighten the bounds around the current plot:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x))
 plt.axis('tight');
+</code>
 </pre>
 
 
 <p>It allows even higher-level specifications, such as ensuring an equal aspect ratio so that one unit in x is equal to one unit in y:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x))
 plt.axis('equal');
+</code>
 </pre>
 
 
@@ -166,10 +191,12 @@ plt.axis('equal');
 <p>As the last piece of this recipe, we’ll briefly look at the labeling of plots: titles, axis labels, and simple legends.</p>
 <p>Titles and axis labels are the simplest of these: there are methods which can be used to quickly set these:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x))
 plt.title("A Sine Curve")
 plt.xlabel("x")
 plt.ylabel("sin(x)");
+</code>
 </pre>
 
 
@@ -180,11 +207,13 @@ Again, matplotlib has a built-in way of quickly creating such a legend.
 It is done via the (you guessed it) <code>plt.legend()</code> method.
 Though there are several valid ways of using this, I find it easiest to specify the label of each line using the <code>label</code> keyword of the plot function:</p>
 <pre data-code-language="python" data-executable="true" data-type="programlisting">
+<code>
 plt.plot(x, np.sin(x), '-r', label='sin(x)')
 plt.plot(x, np.cos(x), ':b', label='cos(x)')
 plt.axis('equal')
 
 plt.legend();
+</code>
 </pre>
 
 
